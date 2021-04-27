@@ -16,21 +16,7 @@ const UrlForm = () => {
         setUrls([{id: nanoid(), link: currentUrl}, ...urls])
         setCurrentUrl('')
     }
-    /*
-    const uniqueLink = (link, url) => {
-        let isUnique = !(allUrls.some(url => url.ending === link))
-        if (isUnique) {
-            const data = {
-                id: allUrls[allUrls.length - 1].id + 1,
-                link: url,
-                ending: link
-            }
-            setAllUrls([...allUrls, data])
-            return [data, true]
-        }
-        return [{}, false]
-    }
-    */
+
     return (
         <div>
             <form onSubmit={handleSubmitUrl}>

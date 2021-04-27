@@ -1,12 +1,17 @@
 import React from 'react'
-import UrlForm from './urlForm'
+import UrlEnding from './UrlEnding'
+import MainPage from './MainPage'
+import { Switch, Route, Redirect } from "react-router-dom";
 
 const App = () => {
     return (
-        <div>
-            <h1>Vault</h1>
-            <UrlForm />
-        </div>
+        <Switch>
+            <Route exact path="/:ending" component={UrlEnding} />
+            <Route exact path="/">
+                <MainPage />
+            </Route>
+            <Redirect from="/" to="/" />
+        </Switch>
     )
 }
 

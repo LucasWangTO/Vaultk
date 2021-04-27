@@ -7,7 +7,6 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 
-
 app.get('/', (req, res) => {
     res.send("<pre>Vaultk API</pre>")
 })
@@ -36,14 +35,14 @@ app.get('/:ending', (req, res) => {
     Link.findOneAndRemove({ending: req.params.ending})
     .then(link => {
         if (link) {
-            res.redirect(link.url)
+            res.send(link.url)
          } else {
-            res.redirect('/')
+            res.send("https://vaul.tk")
         }
     })
 })
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-    console.log("Server Running!")
+    console.log(`Server running on port ${PORT}!`)
 })
