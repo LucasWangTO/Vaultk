@@ -37,7 +37,7 @@ const ShortUrl = (props) => {
             console.log('Success:', data);
             setLinkSuccess(true)
         })
-        .catch((error) => {
+        .catch(error => {
             console.log(error);
             setLinkSuccess(false);
         });
