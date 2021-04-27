@@ -1,8 +1,6 @@
-import React from 'react'
-
 const UrlEnding = (props) => {
     const ending = props.match.params.ending;
-    fetch(`http://localhost:3001/${ending}`)
+    fetch(`http://vaultk.herokuapp.com/${ending}`)
      .then(response => response.text())
      .then(data => {
          window.location.replace(data);
