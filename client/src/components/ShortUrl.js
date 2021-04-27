@@ -15,7 +15,7 @@ const ShortUrl = (props) => {
             url: props.url,
             ending: link
         }
-        fetch('http://vaultk.herokuapp.com/api/urls', {
+        fetch('https://vaultk.herokuapp.com/api/urls', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
