@@ -9,7 +9,7 @@ const Link = (props) => {
         return (
             <Fragment>
                 <input type="text" value={props.url} onChange={props.handleChange}/>
-                <button type="submit">Confirm</button>
+                <button type="submit" disabled={props.isDisabled}>Confirm</button>
             </Fragment>
 
         )

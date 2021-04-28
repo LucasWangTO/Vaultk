@@ -4,6 +4,7 @@ import Link from './Link'
 const ShortUrl = (props) => {
     const [link, setLink] = useState('')
     const [linkSuccess, setLinkSuccess] = useState(false)
+    const [buttonDisabled, setButtonDisabled] = useState(false)
 
     const handleChange = (event) => {
         setLink(event.target.value)
@@ -11,6 +12,8 @@ const ShortUrl = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
+        setButtonDisabled(true);
 
         // New Link
         const data = {
@@ -43,6 +46,7 @@ const ShortUrl = (props) => {
         })
         .catch(error => {
             console.log(error);
+            setButtonDisabled(false);
             setLinkSuccess(false);
         });
     }
@@ -51,7 +55,7 @@ const ShortUrl = (props) => {
         <form onSubmit={handleSubmit}>
             <br />
             <label><span>{props.displayUrl}</span> vaul.tk/</label>
-            <Link url={link} handleChange={handleChange} isLink={linkSuccess}/>
+            <Link url={link} handleChange={handleChange} isLink={linkSuccess} isDisabled={buttonDisabled}/>
         </form>
     )
 }
