@@ -1,5 +1,5 @@
 const UrlEnding = (props) => {
-    const ending = props.match.params.ending;
+    const ending = props.match.params.ending.toLowerCase();
     fetch(`https://vaultk.herokuapp.com/${ending}`)
      .then(response => response.text())
      .then(data => {

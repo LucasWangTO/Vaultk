@@ -11,10 +11,14 @@ const ShortUrl = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
+        // New Link
         const data = {
             url: props.url,
-            ending: link
+            ending: link.toLowerCase()
         }
+
+        // POST link to database
         fetch('https://vaultk.herokuapp.com/api/urls', {
             method: 'POST',
             headers: {
@@ -34,7 +38,7 @@ const ShortUrl = (props) => {
             return response.json();
         })
         .then(data => {
-            console.log('Success:', data);
+//            console.log('Success:', data);
             setLinkSuccess(true)
         })
         .catch(error => {
@@ -46,7 +50,7 @@ const ShortUrl = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <br />
-            <label><span>{props.url}</span> vaul.tk/</label>
+            <label><span>{props.displayUrl}</span> vaul.tk/</label>
             <Link url={link} handleChange={handleChange} isLink={linkSuccess}/>
         </form>
     )

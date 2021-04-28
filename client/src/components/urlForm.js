@@ -2,6 +2,19 @@ import React, {useState} from 'react'
 import { nanoid } from 'nanoid'
 import ShortUrl from './ShortUrl'
 
+// Basic URL Validation
+function valid_url(url) {
+    let lowerUrl = url.toLowerCase();
+    let validUrl = url;
+    if (!(lowerUrl.startsWith("http://") || lowerUrl.startsWith("https://"))) {
+        validUrl = "http://".concat(url);
+    }
+    if (url.includes('.')) {
+        return validUrl;
+    }
+    return "";
+}
+
 // JSX Component for inputting URL to shorten
 const UrlForm = () => {
     const [currentUrl, setCurrentUrl] = useState('')
@@ -13,8 +26,13 @@ const UrlForm = () => {
 
     const handleSubmitUrl = (event) => {
         event.preventDefault()
-        setUrls([{id: nanoid(), link: currentUrl}, ...urls])
-        setCurrentUrl('')
+        let validUrl = valid_url(currentUrl)
+        if (validUrl) {
+            setUrls([{id: nanoid(), link: validUrl, displayLink: currentUrl}, ...urls])
+            setCurrentUrl('')
+        } else {
+            alert("URL is not valid!");
+        }
     }
 
     return (
@@ -24,7 +42,7 @@ const UrlForm = () => {
                 <button type="submit">Shorten</button>
             </form>
             <div>
-                {urls.map(url => <ShortUrl key={url.id} url={url.link} />)}
+                {urls.map(url => <ShortUrl key={url.id} url={url.link} displayUrl={url.displayLink} />)}
             </div>
         </div>
     )
