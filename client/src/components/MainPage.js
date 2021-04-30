@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Container from '@material-ui/core/Container'
 import UrlForm from './urlForm'
 
 const MainPage = () => {
     return(
-        <div>
-            <h1>Vault</h1>
-            <UrlForm />
-        </div>
+        <Fragment>
+            <Container>
+                <h1>Vault</h1>
+                <h3>Anonymous URL Shortening for one-time links</h3>
+                <UrlForm />
+            </Container>
+        </Fragment>
     );
 }
 

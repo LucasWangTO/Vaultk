@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
-import { nanoid } from 'nanoid'
-import ShortUrl from './ShortUrl'
+import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
+import ShortUrl from './ShortUrl';
+import CustomText from './CustomText'
+import { Button, Grid } from '@material-ui/core';
 
 // Basic URL Validation
 function valid_url(url) {
@@ -38,10 +40,16 @@ const UrlForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmitUrl}>
-                <input type="text" name="URL" placeholder="Enter URL" value={currentUrl} onChange={handleChange}/>
-                <button type="submit">Shorten</button>
+                <Grid container direction="row" justify="space-between" alignItems="center">
+                    <Grid item xs={12} sm={9}>
+                        <CustomText label="Enter URL" value={currentUrl} size="small" onChange={handleChange} isDisabled={false}/>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>
+                        <Button variant="contained" color="primary" type="submit" size="large" style={{width: "100%"}}>Shorten</Button>
+                    </Grid>
+                </Grid>
             </form>
-            <div>
+            <div style={{marginTop: "1.5rem", marginBottom: "2rem"}}>
                 {urls.map(url => <ShortUrl key={url.id} url={url.link} displayUrl={url.displayLink} />)}
             </div>
         </div>

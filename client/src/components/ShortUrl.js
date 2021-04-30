@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import Link from './Link'
+import CustomUrl from './CustomUrl'
+import { Grid } from '@material-ui/core'
 
 const ShortUrl = (props) => {
     const [link, setLink] = useState('')
@@ -52,10 +54,14 @@ const ShortUrl = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{marginBottom: "1rem"}}>
             <br />
-            <label><span>{props.displayUrl}</span> vaul.tk/</label>
-            <Link url={link} handleChange={handleChange} isLink={linkSuccess} isDisabled={buttonDisabled}/>
+            <Grid container direction="row" justify="space-between" alignItems="center">
+                <Grid item xs={12} sm={4}>
+                    <CustomUrl displayUrl={props.displayUrl} />
+                </Grid>
+                <Link url={link} handleChange={handleChange} isLink={linkSuccess} isDisabled={buttonDisabled}/>
+            </Grid>
         </form>
     )
 }
