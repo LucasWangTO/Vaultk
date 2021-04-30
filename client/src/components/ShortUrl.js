@@ -23,6 +23,8 @@ const ShortUrl = (props) => {
             ending: link.toLowerCase()
         }
 
+        let endingExists = false;
+
         // POST link to database
         fetch('https://vaultk.herokuapp.com/api/urls', {
             method: 'POST',
@@ -35,7 +37,7 @@ const ShortUrl = (props) => {
             // Check if ending already exists
             if (!response.ok) {
                 if (response.status === 409) {
-                    alert("Ending already exists.");
+                    endingExists = true;
                 }
                 throw Error(response.statusText);
             }
@@ -43,13 +45,18 @@ const ShortUrl = (props) => {
             return response.json();
         })
         .then(data => {
-//            console.log('Success:', data);
             setLinkSuccess(true)
+            props.setSnackbar("success", "Successfully shortened URL")
         })
         .catch(error => {
             console.log(error);
             setButtonDisabled(false);
             setLinkSuccess(false);
+            if (endingExists) {
+                props.setSnackbar("error", "Ending already exists. Use another ending.")
+            } else {
+                props.setSnackbar("error", "Unable to create shortened link.")
+            }
         });
     }
 

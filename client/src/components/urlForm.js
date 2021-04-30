@@ -18,7 +18,7 @@ function valid_url(url) {
 }
 
 // JSX Component for inputting URL to shorten
-const UrlForm = () => {
+const UrlForm = (props) => {
     const [currentUrl, setCurrentUrl] = useState('')
     const [urls, setUrls] = useState([])
 
@@ -33,7 +33,7 @@ const UrlForm = () => {
             setUrls([{id: nanoid(), link: validUrl, displayLink: currentUrl}, ...urls])
             setCurrentUrl('')
         } else {
-            alert("URL is not valid!");
+            props.setSnackbar("error", "Unable to shorten link. Invalid URL!")
         }
     }
 
@@ -50,7 +50,7 @@ const UrlForm = () => {
                 </Grid>
             </form>
             <div style={{marginTop: "1.5rem", marginBottom: "2rem"}}>
-                {urls.map(url => <ShortUrl key={url.id} url={url.link} displayUrl={url.displayLink} />)}
+                {urls.map(url => <ShortUrl key={url.id} url={url.link} displayUrl={url.displayLink} setSnackbar={props.setSnackbar} />)}
             </div>
         </div>
     )
