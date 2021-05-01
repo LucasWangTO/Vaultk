@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
 
-const linkSchema = new mongoose.Schema({
-    url: String,
-    ending: String
+const countSchema = new mongoose.Schema({
+    totalShortened: Number
 })
 
-linkSchema.set('toJSON', {
+countSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
@@ -13,4 +12,4 @@ linkSchema.set('toJSON', {
     }
 })
 
-module.exports = mongoose.model('Link', linkSchema)
+module.exports = mongoose.model('Count', countSchema)
