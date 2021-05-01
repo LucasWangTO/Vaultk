@@ -46,6 +46,7 @@ const ShortUrl = (props) => {
         })
         .then(data => {
             setLinkSuccess(true)
+            props.setCounter(data.totalShortened)
             props.setSnackbar("success", "Successfully shortened URL")
         })
         .catch(error => {

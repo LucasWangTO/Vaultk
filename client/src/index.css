@@ -24,8 +24,8 @@ h3 {
   margin-bottom: 2rem;
 }
 
-form {
-  text-align: center;
+.counter {
+  font-size: 2rem;
 }
 
 code {

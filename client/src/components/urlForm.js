@@ -50,7 +50,7 @@ const UrlForm = (props) => {
                 </Grid>
             </form>
             <div style={{marginTop: "1.5rem", marginBottom: "2rem"}}>
-                {urls.map(url => <ShortUrl key={url.id} url={url.link} displayUrl={url.displayLink} setSnackbar={props.setSnackbar} />)}
+                {urls.map(url => <ShortUrl key={url.id} url={url.link} displayUrl={url.displayLink} setSnackbar={props.setSnackbar} setCounter={props.setCounter} />)}
             </div>
         </div>
     )

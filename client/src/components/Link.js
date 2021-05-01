@@ -6,7 +6,7 @@ const Link = (props) => {
     if (props.isLink) {
         return (
             <Grid item xs={12} sm={8} >
-                <Typography variant="h6">
+                <Typography variant="h6" style={{textAlign: "center"}}>
                     vaul.tk/{props.url}
                 </Typography>
             </Grid>
