@@ -1,6 +1,6 @@
 # VaultK
 
-Vaultk is a URL Shortening web application where the link shortened can only be accessed once.
+Vaultk is a URL Shortening web application where the link shortened can only be accessed once. A live version can be accessed at https://vaul.tk/ (Functionality may take some time to load due to Heroku's web dyno sleeping).
 
 ![Demo of https://vaul.tk/](./pictures/Demo.png)
 
